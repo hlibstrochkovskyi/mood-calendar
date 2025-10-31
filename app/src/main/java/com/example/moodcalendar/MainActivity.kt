@@ -54,17 +54,17 @@ fun MoodCalendarApp(viewModel: CalendarViewModel) {
         // NavHost is the "container" that displays the appropriate screen
         NavHost(
             navController = navController,
-            startDestination = "month", // Start with the monthly screen
-
-            // 2. Apply padding from Scaffold to the NavHost
+            startDestination = "month",
             modifier = Modifier.padding(innerPadding)
         ) {
-            // First screen: "month"
             composable(route = "month") {
-                MonthlyCalendarScreen() // Now it's placed within the padding area
+                // Передаем viewModel и navController
+                MonthlyCalendarScreen(
+                    navController = navController,
+                    viewModel = viewModel
+                )
             }
 
-            // Second screen: "year"
             composable(route = "year") {
                 YearlyOverviewScreen()
             }
